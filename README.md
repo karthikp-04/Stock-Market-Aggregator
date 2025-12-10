@@ -1,46 +1,17 @@
-Stock Market Aggregator
+# 📊 **Stock Market Aggregator - Detailed Technical Overview**
 
-Stock Market Aggregator is a Python program designed to track stock prices, calculate key statistics, and provide real-time alerts. It efficiently handles large datasets and allows users to query historical stock data over custom date ranges.
+## 🏗️ **Core Data Structure Architecture**
 
-Features
+The system employs three specialized data structures working in concert: a **Min-Heap** for O(log n) retrieval of the lowest stock price, a **Max-Heap** (implemented cleverly by storing negative values in a min-heap) for O(log n) retrieval of the highest stock price, and a **Segment Tree** that enables O(log n) range queries for computing rolling averages and cumulative sums over date ranges. This hybrid approach balances the need for real-time extreme value detection with efficient historical data analysis.
 
-Track Stock Prices
-Add stock prices along with their dates and names.
+## 🔄 **Real-Time Monitoring & Alert System**
 
-Efficient Min/Max Tracking
-Uses MinHeap and MaxHeap data structures to quickly retrieve the lowest and highest stock prices.
+The aggregator maintains a comprehensive price history database storing tuples of (price, stock_name, date) and implements an intelligent alert mechanism that automatically triggers notifications when stocks breach user-defined thresholds. The system processes new stock entries in O(log n) time for both heap insertions while simultaneously checking alert conditions against the stock_alerts dictionary for immediate user feedback.
 
-Alerts
-Set price thresholds for stocks and get notifications if a stock price drops below the threshold.
+## 📈 **Analytical Capabilities & Date-Range Operations**
 
-Range Queries & Averages
-Uses a Segment Tree for efficient calculation of:
+Beyond basic tracking, the system provides sophisticated analytical functions including precise date-range filtering for computing averages, maximum prices within specific time windows, and rolling average calculations that show price trend evolution. The segment tree implementation ensures these range queries execute efficiently even as the dataset grows, while the heap structures guarantee constant-time access to current market extremes.
 
-Average price of a stock over a date range
+## 🎯 **Interactive Financial Dashboard**
 
-Maximum price of a stock over a date range
-
-Rolling averages for trend analysis
-
-Interactive CLI
-Users can input stock prices, set alerts, and request statistical information directly from the command line.
-
-How It Works
-
-Adding Stocks: Stock prices are added along with their date and name. Heaps are updated for quick retrieval of min/max prices.
-
-Alerts: When a new stock price is added, it checks if the price violates any user-set thresholds and triggers an alert.
-
-Querying Statistics:
-
-get_average_price() → calculates the average price in a date range.
-
-get_maximum_price() → finds the maximum price in a date range.
-
-get_rolling_average() → computes cumulative averages to show trends.
-
-Data Structures Used
-
-MinHeap / MaxHeap: For O(1) retrieval of lowest/highest stock prices.
-
-Segment Tree: For efficient range sum, average, and update operations.
+Through a structured command-line interface, users can dynamically add stocks, set customized price alerts, and retrieve various metrics including lowest/highest performing stocks, time-weighted averages, and rolling price trends. The system demonstrates practical application of advanced data structures in financial technology, combining theoretical efficiency with real-world usability for informed investment decision-making.
